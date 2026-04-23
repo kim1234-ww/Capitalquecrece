@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital que Crece · Kimberly Gómez</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:  #F5F3EE;
+    --white:  #FFFFFF;
+    --ink:    #0E0E0E;
+    --char:   #2A2A2A;
+    --stone:  #555;
+    --silver: #D8D5CF;
+    --coral:  #E8637A;
+    --coral2: #D94F65;
+    --gold:   #B08A42;
+  }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–cream);
+color: var(–ink);
+overflow-x: hidden;
+}
+
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+/* ── NAV ── */
+nav {
+padding: 22px 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid var(–silver);
+position: sticky;
+top: 0;
+background: rgba(245,243,238,.95);
+backdrop-filter: blur(10px);
+z-index: 100;
+}
+
+.logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+font-weight: 700;
+letter-spacing: -0.5px;
+color: var(–ink);
+}
+.logo em {
+font-style: italic;
+color: var(–coral);
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 28px;
+}
+
+.nav-link {
+font-size: 12px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(–stone);
+text-decoration: none;
+transition: color .2s;
+}
+.nav-link:hover { color: var(–coral); }
+
+.nav-btn {
+background: var(–ink);
+color: var(–white);
+font-size: 12px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 12px 24px;
+text-decoration: none;
+border-radius: 100px;
+transition: background .2s;
+}
+.nav-btn:hover { background: var(–coral); }
+
+/* ── HERO ── */
+#hero {
+padding: 80px 0 100px;
+text-align: center;
+position: relative;
+}
+
+/* Subtle background pattern */
+#hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background-image: radial-gradient(circle at 20% 80%, rgba(232,99,122,.06) 0%, transparent 60%),
+radial-gradient(circle at 80% 20%, rgba(176,138,66,.06) 0%, transparent 60%);
+pointer-events: none;
+}
+
+.hero-eyebrow {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–coral);
+margin-bottom: 24px;
+display: block;
+}
+
+.hero-title {
+font-family: ‘Playfair Display’, serif;
+font-weight: 900;
+font-size: clamp(64px, 10vw, 130px);
+line-height: 0.9;
+color: var(–ink);
+letter-spacing: -3px;
+margin-bottom: 4px;
+}
+
+.hero-title em {
+font-style: italic;
+color: var(–coral);
+font-weight: 700;
+}
+
+.hero-rule {
+width: 48px;
+height: 2px;
+background: var(–coral);
+margin: 28px auto;
+}
+
+.hero-subtitle {
+font-family: ‘DM Sans’, sans-serif;
+font-size: clamp(15px, 1.8vw, 19px);
+font-weight: 300;
+color: var(–stone);
+line-height: 1.7;
+max-width: 560px;
+margin: 0 auto 40px;
+}
+
+.hero-subtitle strong { color: var(–ink); font-weight: 500; }
+
+.hero-buttons {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 14px;
+margin-bottom: 64px;
+}
+
+.btn {
+display: inline-block;
+text-decoration: none;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 12px;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+padding: 16px 32px;
+border-radius: 100px;
+transition: all .25s;
+}
+.btn-coral { background: var(–coral); color: var(–white); }
+.btn-coral:hover { background: var(–coral2); }
+.btn-dark  { background: var(–ink); color: var(–white); }
+.btn-dark:hover { background: var(–char); }
+.btn-outline { border: 1.5px solid var(–ink); color: var(–ink); background: transparent; }
+.btn-outline:hover { background: var(–ink); color: var(–white); }
+
+/* Hero stat bar */
+.hero-stats {
+display: flex;
+justify-content: center;
+gap: 0;
+max-width: 720px;
+margin: 0 auto;
+border: 1px solid var(–silver);
+background: var(–white);
+border-radius: 16px;
+overflow: hidden;
+}
+.h-stat {
+flex: 1;
+padding: 24px 16px;
+text-align: center;
+border-right: 1px solid var(–silver);
+transition: background .2s;
+}
+.h-stat:last-child { border-right: none; }
+.h-stat:hover { background: var(–cream); }
+.h-stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 30px;
+font-weight: 700;
+font-style: italic;
+color: var(–ink);
+line-height: 1;
+margin-bottom: 6px;
+}
+.h-stat-num.coral { color: var(–coral); }
+.h-stat-label {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(–stone);
+}
+.h-stat-sub {
+font-size: 10px;
+color: #999;
+margin-top: 3px;
+font-style: italic;
+}
+
+/* ── SECTION COMMON ── */
+.section {
+padding: 96px 0;
+}
+
+.section-header {
+text-align: center;
+margin-bottom: 56px;
+}
+
+.tag {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–coral);
+margin-bottom: 14px;
+display: block;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-weight: 700;
+font-size: clamp(32px, 4vw, 52px);
+line-height: 1.1;
+color: var(–ink);
+letter-spacing: -0.5px;
+}
+.section-title em { font-style: italic; color: var(–coral); }
+
+.section-sub {
+font-size: clamp(14px, 1.4vw, 17px);
+font-weight: 300;
+color: var(–stone);
+max-width: 600px;
+margin: 14px auto 0;
+line-height: 1.75;
+}
+
+/* ── COMPARATIVA ── */
+#comparativa { background: var(–white); }
+
+.compare-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}
+
+.comp-card {
+background: var(–cream);
+border: 1px solid var(–silver);
+border-radius: 20px;
+padding: 36px 28px;
+text-align: center;
+transition: transform .2s, box-shadow .2s;
+}
+.comp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+
+.comp-card.featured {
+background: var(–ink);
+border-color: var(–ink);
+color: var(–white);
+}
+.comp-card.featured .comp-sub { color: rgba(255,255,255,.5); }
+.comp-card.featured .comp-num { color: var(–coral); }
+
+.comp-icon { font-size: 28px; margin-bottom: 16px; }
+.comp-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 20px;
+font-weight: 700;
+margin-bottom: 8px;
+}
+.comp-sub {
+font-size: 12px;
+color: var(–stone);
+margin-bottom: 16px;
+line-height: 1.5;
+}
+.comp-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 38px;
+font-weight: 900;
+font-style: italic;
+color: var(–ink);
+line-height: 1;
+margin-bottom: 8px;
+}
+.comp-desc {
+font-size: 12px;
+color: var(–stone);
+}
+.comp-badge {
+display: inline-block;
+background: var(–coral);
+color: var(–white);
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 4px 12px;
+border-radius: 100px;
+margin-top: 12px;
+}
+.comp-note {
+text-align: center;
+font-size: 11px;
+color: #999;
+font-style: italic;
+margin-top: 20px;
+}
+
+/* ── QUOTE ── */
+#quote {
+background: var(–ink);
+padding: 80px 0;
+text-align: center;
+}
+.quote-text {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: clamp(22px, 3vw, 40px);
+color: var(–white);
+line-height: 1.4;
+max-width: 760px;
+margin: 0 auto 16px;
+letter-spacing: -.3px;
+}
+.quote-text em { color: var(–coral); font-style: normal; }
+.quote-attr {
+font-size: 10px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: rgba(255,255,255,.35);
+}
+
+/* ── PASOS ── */
+#como { background: var(–cream); }
+
+.steps-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}
+
+.step-card {
+background: var(–white);
+border: 1px solid var(–silver);
+border-radius: 20px;
+padding: 36px 28px;
+position: relative;
+overflow: hidden;
+transition: box-shadow .2s;
+}
+.step-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.07); }
+.step-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(–coral);
+transform: scaleX(0);
+transition: transform .3s;
+transform-origin: left;
+}
+.step-card:hover::before { transform: scaleX(1); }
+
+.step-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 64px;
+font-weight: 900;
+font-style: italic;
+color: var(–cream);
+line-height: 1;
+margin-bottom: 12px;
+}
+.step-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 20px;
+font-weight: 700;
+color: var(–ink);
+margin-bottom: 10px;
+}
+.step-body {
+font-size: 13px;
+color: var(–stone);
+line-height: 1.65;
+}
+
+/* ── VENTAJAS ── */
+#ventajas { background: var(–white); }
+
+.ventajas-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 0;
+border: 1px solid var(–silver);
+border-radius: 20px;
+overflow: hidden;
+}
+
+.ventaja {
+padding: 32px 28px;
+border-right: 1px solid var(–silver);
+border-bottom: 1px solid var(–silver);
+display: flex;
+gap: 16px;
+transition: background .2s;
+}
+.ventaja:hover { background: var(–cream); }
+.ventaja:nth-child(2n) { border-right: none; }
+.ventaja:nth-last-child(-n+2) { border-bottom: none; }
+
+.ventaja-icon {
+font-size: 20px;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.ventaja-title {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+font-weight: 500;
+color: var(–ink);
+margin-bottom: 6px;
+}
+.ventaja-body {
+font-size: 12px;
+color: var(–stone);
+line-height: 1.65;
+}
+
+/* ── DISCLAIMER ── */
+#disclaimer {
+background: var(–cream);
+padding: 32px 0;
+border-top: 1px solid var(–silver);
+border-bottom: 1px solid var(–silver);
+}
+.disclaimer-inner {
+display: flex;
+gap: 16px;
+align-items: flex-start;
+max-width: 800px;
+margin: 0 auto;
+}
+.disclaimer-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.disclaimer-text {
+font-size: 11px;
+color: var(–stone);
+line-height: 1.7;
+font-style: italic;
+}
+.disclaimer-text strong { font-style: normal; color: var(–ink); }
+
+/* ── CTA FINAL ── */
+#cta {
+background: var(–cream);
+padding: 100px 0;
+text-align: center;
+}
+
+.cta-title {
+font-family: ‘Playfair Display’, serif;
+font-weight: 900;
+font-size: clamp(48px, 7vw, 90px);
+line-height: 0.92;
+color: var(–ink);
+letter-spacing: -2px;
+margin-bottom: 8px;
+}
+.cta-title em { font-style: italic; color: var(–coral); }
+
+.cta-rule {
+width: 48px; height: 2px;
+background: var(–coral);
+margin: 24px auto;
+}
+
+.cta-sub {
+font-size: clamp(14px, 1.5vw, 18px);
+font-weight: 300;
+color: var(–stone);
+max-width: 480px;
+margin: 0 auto 40px;
+line-height: 1.7;
+}
+
+.cta-buttons {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 14px;
+margin-bottom: 56px;
+}
+
+.contact-strip {
+display: flex;
+justify-content: center;
+gap: 40px;
+flex-wrap: wrap;
+padding-top: 40px;
+border-top: 1px solid var(–silver);
+}
+.c-item { text-align: center; }
+.c-label {
+font-size: 8px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #aaa;
+margin-bottom: 4px;
+}
+.c-val {
+font-size: 12px;
+font-weight: 500;
+color: var(–coral);
+text-decoration: none;
+transition: color .2s;
+}
+.c-val:hover { color: var(–ink); }
+
+/* ── FOOTER ── */
+footer {
+background: var(–ink);
+padding: 28px 0;
+text-align: center;
+}
+.footer-inner {
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 12px;
+}
+.footer-brand {
+font-family: ‘Playfair Display’, serif;
+font-size: 14px;
+font-weight: 700;
+color: var(–white);
+letter-spacing: 1px;
+}
+.footer-brand em { font-style: italic; color: var(–coral); }
+.footer-note {
+font-size: 10px;
+color: rgba(255,255,255,.25);
+letter-spacing: .5px;
+}
+
+/* ── Animations ── */
+.reveal {
+opacity: 0;
+transform: translateY(24px);
+transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+.compare-grid, .steps-grid { grid-template-columns: 1fr; }
+.ventajas-grid { grid-template-columns: 1fr; }
+.ventaja:nth-child(2n) { border-right: none; }
+.ventaja:nth-last-child(-n+2) { border-bottom: 1px solid var(–silver); }
+.ventaja:last-child { border-bottom: none; }
+.hero-stats { flex-direction: column; border-radius: 16px; }
+.h-stat { border-right: none; border-bottom: 1px solid var(–silver); }
+.h-stat:last-child { border-bottom: none; }
+nav .nav-links .nav-link { display: none; }
+.contact-strip { gap: 20px; }
+.footer-inner { justify-content: center; text-align: center; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ── NAV ── -->
+
+<div class="container">
+<nav>
+  <div class="logo">Capital <em>que Crece</em></div>
+  <div class="nav-links">
+    <a href="#comparativa" class="nav-link">Comparativa</a>
+    <a href="#como" class="nav-link">Cómo funciona</a>
+    <a href="https://chat.whatsapp.com/IhlqB9DYFSUCZckgK6Y2Q4?mode=gi_t" target="_blank" class="nav-btn">Grupo Privado</a>
+  </div>
+</nav>
+</div>
+
+<!-- ── HERO ── -->
+
+<section id="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Kimberly Gómez · Financial Growth Mentor · BDM PUPrime</span>
+    <h1 class="hero-title">CAPITAL<br><em>que</em><br>CRECE</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-subtitle">Tu dinero merece más que dormir en el banco.<br><strong>Descubre una forma inteligente de hacerlo trabajar para ti.</strong></p>
+    <div class="hero-buttons">
+      <a href="https://chat.whatsapp.com/IhlqB9DYFSUCZckgK6Y2Q4?mode=gi_t" target="_blank" class="btn btn-coral">Entrar al Grupo Privado</a>
+      <a href="https://calendly.com/kimberlygomez/15min" target="_blank" class="btn btn-dark">Agendar Llamada 1:1</a>
+      <a href="#comparativa" class="btn btn-outline">Ver la comparativa</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="h-stat">
+        <div class="h-stat-num coral">0.83%</div>
+        <div class="h-stat-label">Banco mensual real</div>
+        <div class="h-stat-sub">10% anual · muy poco</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">5%</div>
+        <div class="h-stat-label">Objetivo conservador</div>
+        <div class="h-stat-sub">mensual · gestión manual</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">$3,225</div>
+        <div class="h-stat-label">$1,000 en 24 meses</div>
+        <div class="h-stat-sub">vs $1,221 en el banco</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">24h</div>
+        <div class="h-stat-label">Para empezar</div>
+        <div class="h-stat-sub">proceso 100% online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARATIVA ── -->
+
+<section id="comparativa" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Los números</span>
+      <h2 class="section-title">¿Por qué solo ahorrar<br><em>no basta?</em></h2>
+      <p class="section-sub">Tres destinos para el mismo capital. Mientras muchas cuentas bancarias avanzan lentamente, existen alternativas con mejor potencial cuando se usan con educación y gestión adecuada.</p>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="comp-card">
+        <div class="comp-icon">🏦</div>
+        <div class="comp-name">Banco / CDT</div>
+        <div class="comp-sub">Rendimiento tradicional anual</div>
+        <div class="comp-num" style="color:var(--stone);">~10%</div>
+        <div class="comp-desc">0.83% mensual real<br>$1,000 → $1,221 en 24 meses</div>
+      </div>
+      <div class="comp-card featured">
+        <div class="comp-icon">📊</div>
+        <div class="comp-name">Capital Activo</div>
+        <div class="comp-sub" style="color:rgba(255,255,255,.5);">Copytrading con gestión manual</div>
+        <div class="comp-num">5–8%</div>
+        <div class="comp-desc" style="color:rgba(255,255,255,.6);">Objetivo mensual con traders verificados<br>$1,000 → $3,225 en 24 meses*</div>
+        <span class="comp-badge">Recomendado</span>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📈</div>
+        <div class="comp-name">S&P 500</div>
+        <div class="comp-sub">Promedio histórico anual</div>
+        <div class="comp-num" style="color:var(--gold);">8–12%</div>
+        <div class="comp-desc">Buena opción a largo plazo<br>Requiere paciencia y visión</div>
+      </div>
+    </div>
+    <p class="comp-note">* Proyecciones ilustrativas basadas en tasas históricas. No garantizan resultados futuros. El trading implica riesgo de pérdida de capital.</p>
+  </div>
+</section>
+
+<!-- ── QUOTE ── -->
+
+<section id="quote">
+  <div class="container">
+    <p class="quote-text">"Ahorrar protege.<br>Invertir <em>impulsa</em>.<br>El tiempo sin estrategia también cuesta."</p>
+    <p class="quote-attr">Capital que Crece · Kimberly Gómez</p>
+  </div>
+</section>
+
+<!-- ── CÓMO FUNCIONA ── -->
+
+<section id="como" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">El proceso</span>
+      <h2 class="section-title">Empieza en <em>3 pasos</em></h2>
+      <p class="section-sub">Sin experiencia previa. Sin horas frente a gráficas. Solo capital, una cuenta regulada y la estrategia correcta.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Únete al grupo</div>
+        <p class="step-body">Ingresa al canal privado gratuito donde compartimos información, oportunidades y guía inicial sobre copytrading y finanzas inteligentes.</p>
+        <div style="margin-top:20px;">
+          <a href="https://chat.whatsapp.com/IhlqB9DYFSUCZckgK6Y2Q4?mode=gi_t" target="_blank" class="btn btn-coral" style="font-size:11px;padding:12px 22px;">Unirme ahora →</a>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">Crea tu cuenta</div>
+        <p class="step-body">Abre tu cuenta con un broker regulado internacionalmente. Proceso 100% online, menos de 10 minutos. Recibes acompañamiento directo conmigo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Haz crecer</div>
+        <p class="step-body">Conectas con traders verificados y tu capital empieza a trabajar. Monitoreas desde tu panel. Puedes pausar o retirar cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VENTAJAS ── -->
+
+<section id="ventajas" class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Por qué diferente</span>
+      <h2 class="section-title">Acceso real a la industria —<br>y el control, <em>siempre tuyo</em></h2>
+    </div>
+    <div class="ventajas-grid reveal">
+      <div class="ventaja">
+        <span class="ventaja-icon">🎯</span>
+        <div>
+          <div class="ventaja-title">Criterio humano, no algoritmos</div>
+          <p class="ventaja-body">Traders manuales verificados con historial real. Un humano sabe cuándo no operar — un bot no.</p>
+        </div>
+      </div>
+      <div class="ventaja">
+        <span class="ventaja-icon">🏦</span>
+        <div>
+          <div class="ventaja-title">Broker regulado internacionalmente</div>
+          <p class="ventaja-body">PUPrime opera bajo regulación FSC, FSA y FSCA. Tu capital en una plataforma supervisada.</p>
+        </div>
+      </div>
+      <div class="ventaja">
+        <span class="ventaja-icon">🔍</span>
+        <div>
+          <div class="ventaja-title">Historial verificable y transparente</div>
+          <p class="ventaja-body">Ves el rendimiento real, drawdown máximo y meses activo antes de conectarte. Sin promesas vacías.</p>
+        </div>
+      </div>
+      <div class="ventaja">
+        <span class="ventaja-icon">🤝</span>
+        <div>
+          <div class="ventaja-title">Acceso directo dentro del broker</div>
+          <p class="ventaja-body">Como BDM de PUPrime, no soy intermediaria externa. Tienes acceso directo a alguien dentro de la institución.</p>
+        </div>
+      </div>
+      <div class="ventaja">
+        <span class="ventaja-icon">⚡</span>
+        <div>
+          <div class="ventaja-title">Empieza en menos de 24 horas</div>
+          <p class="ventaja-body">Desde que decides hasta que tu capital está activo. Sin burocracia, sin esperas innecesarias.</p>
+        </div>
+      </div>
+      <div class="ventaja">
+        <span class="ventaja-icon">🔓</span>
+        <div>
+          <div class="ventaja-title">Control total en todo momento</div>
+          <p class="ventaja-body">Pausa el copiado, cambia de trader o retira tu capital cuando lo decidas. Sin bloqueos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+
+<section id="trust" style="background:var(--ink);padding:48px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
+      <div style="background:rgba(255,255,255,.03);padding:32px 28px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:12px;">💸</div>
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#fff;margin-bottom:8px;">Retira desde el día 1</div>
+        <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;">Sin períodos de bloqueo. Sin penalizaciones. Tu dinero está disponible cuando lo necesites.</p>
+      </div>
+      <div style="background:rgba(232,99,122,.08);padding:32px 28px;text-align:center;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);">
+        <div style="font-size:28px;margin-bottom:12px;">🔓</div>
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#fff;margin-bottom:8px;">100% control tuyo</div>
+        <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;">Tú decides cuándo pausar, cambiar de trader o salir. El control nunca sale de tus manos.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.03);padding:32px 28px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:12px;">🏛️</div>
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#fff;margin-bottom:8px;">Dentro del broker, no afuera</div>
+        <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;">No soy un intermediario externo. Soy BDM de PUPrime — acceso directo a quien toma decisiones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DISCLAIMER ── -->
+
+<section id="disclaimer">
+  <div class="container">
+    <div class="disclaimer-inner">
+      <span class="disclaimer-icon">⚠️</span>
+      <p class="disclaimer-text"><strong>Importante:</strong> Las proyecciones presentadas son cálculos matemáticos basados en tasas históricas y no constituyen garantía de resultados futuros. El copytrading implica riesgo real de pérdida parcial o total del capital. <strong>Nunca inviertas dinero que no puedas permitirte perder.</strong> Esta página tiene carácter exclusivamente educativo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+
+<section id="cta">
+  <div class="container">
+    <div class="reveal">
+      <span class="tag">El siguiente paso</span>
+      <h2 class="cta-title">CAPITAL<br><em>que</em> CRECE</h2>
+      <div class="cta-rule"></div>
+      <p class="cta-sub">Hablemos. Cuéntame tu situación y te digo exactamente cómo empezar — sin compromisos.</p>
+      <div class="cta-buttons">
+        <a href="https://chat.whatsapp.com/IhlqB9DYFSUCZckgK6Y2Q4?mode=gi_t" target="_blank" class="btn btn-coral">Entrar al Grupo Privado</a>
+        <a href="https://calendly.com/kimberlygomez/15min" target="_blank" class="btn btn-dark">Agendar llamada 1:1</a>
+      </div>
+      <div class="contact-strip">
+        <div class="c-item">
+          <div class="c-label">Calendly</div>
+          <a href="https://calendly.com/kimberlygomez/15min" target="_blank" class="c-val">calendly.com/kimberlygomez/15min</a>
+        </div>
+        <div class="c-item">
+          <div class="c-label">WhatsApp</div>
+          <a href="https://wa.me/message/ADYY7NZ3SRDDH1" target="_blank" class="c-val">+44 7498 349 151</a>
+        </div>
+        <div class="c-item">
+          <div class="c-label">Email</div>
+          <a href="mailto:kimberly.gomez@puprime.com" class="c-val">kimberly.gomez@puprime.com</a>
+        </div>
+        <div class="c-item">
+          <div class="c-label">Instagram</div>
+          <a href="https://instagram.com/kimberlytatiana_" target="_blank" class="c-val">@kimberlytatiana_</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">Capital <em>que Crece</em></span>
+      <span class="footer-note">Kimberly Gómez · BDM PUPrime · @kimberlytatiana_ · © 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
