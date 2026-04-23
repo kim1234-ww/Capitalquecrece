@@ -581,7 +581,65 @@ color: rgba(255,255,255,.25);
 letter-spacing: .5px;
 }
 
-/* ── Animations ── */
+/* ── SAFARI FIX — hard coded critical styles ── */
+a { color: inherit; text-decoration: none; }
+.btn {
+display: inline-block !important;
+text-decoration: none !important;
+font-family: ‘DM Sans’, sans-serif !important;
+font-size: 12px !important;
+font-weight: 500 !important;
+letter-spacing: 1.5px !important;
+text-transform: uppercase !important;
+padding: 16px 32px !important;
+border-radius: 100px !important;
+transition: all .25s !important;
+-webkit-appearance: none !important;
+}
+.btn-coral {
+background: #E8637A !important;
+color: #FFFFFF !important;
+border: none !important;
+}
+.btn-dark {
+background: #0E0E0E !important;
+color: #FFFFFF !important;
+border: none !important;
+}
+.btn-outline {
+border: 1.5px solid #0E0E0E !important;
+color: #0E0E0E !important;
+background: transparent !important;
+}
+.nav-btn {
+background: #0E0E0E !important;
+color: #FFFFFF !important;
+font-size: 12px !important;
+font-weight: 500 !important;
+letter-spacing: 1px !important;
+text-transform: uppercase !important;
+padding: 12px 24px !important;
+text-decoration: none !important;
+border-radius: 100px !important;
+-webkit-appearance: none !important;
+}
+.hero-eyebrow { color: #E8637A !important; }
+.hero-title em { color: #E8637A !important; }
+.hero-rule { background: #E8637A !important; }
+.tag { color: #E8637A !important; }
+.section-title em { color: #E8637A !important; }
+.comp-card.featured { background: #0E0E0E !important; color: #FFFFFF !important; }
+.comp-card.featured .comp-num { color: #E8637A !important; }
+.comp-badge { background: #E8637A !important; color: #FFFFFF !important; }
+.quote-text em { color: #E8637A !important; }
+.cta-title em { color: #E8637A !important; }
+.cta-rule { background: #E8637A !important; }
+.c-val { color: #E8637A !important; }
+.logo em { color: #E8637A !important; font-style: italic !important; }
+.footer-brand em { color: #E8637A !important; font-style: italic !important; }
+.h-stat-num.coral { color: #E8637A !important; }
+.step-card::before { background: #E8637A !important; }
+#trust { background: #0E0E0E !important; }
 .reveal {
 opacity: 0;
 transform: translateY(24px);
