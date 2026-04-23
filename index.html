@@ -5,7 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capital que Crece · Kimberly Gómez</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  /* Fallback fonts if Google Fonts fails */
+  @supports not (font-family: 'Playfair Display') {
+    :root { --serif: Georgia, 'Times New Roman', serif; --sans: -apple-system, BlinkMacSystemFont, sans-serif; }
+  }
+</style>
 <style>
   :root {
     --cream:  #F5F3EE;
